@@ -21,7 +21,7 @@ class GetStarted extends StatelessWidget {
       backgroundColor: AppColor.backgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
               const Spacer(),
@@ -99,7 +99,7 @@ class GetStarted extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               const PawPrints.bottomRight(),
-              const SizedBox(height: 30),
+              
             ],
           ),
         ),

@@ -13,23 +13,24 @@ class DeepOrangeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: ElevatedButton(onPressed: onPressed,
-      
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size.fromHeight( height ?? 45),
-          backgroundColor: AppColor.darkOrange,
-          foregroundColor: Colors.white,
-          textStyle: const TextStyle(
-            fontSize: 25,
-            fontFamily: 'Bainsley', 
-            fontWeight: FontWeight.w400
-          ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          )),
-       child: Text(title)),
+        
+        style: ElevatedButton.styleFrom(
+          minimumSize: Size.fromHeight( height ?? 45),
+            backgroundColor: AppColor.darkOrange,
+            foregroundColor: Colors.white,
+            textStyle: const TextStyle(
+              fontSize: 25,
+              fontFamily: 'Bainsley', 
+              fontWeight: FontWeight.w400
+            ),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            )),
+         child: Text(title)
+      ),
     );
   }
 }

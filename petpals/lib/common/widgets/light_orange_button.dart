@@ -14,7 +14,7 @@ class LightOrangeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 25),
       child: ElevatedButton(onPressed: onPressed,
       
       style: ElevatedButton.styleFrom(

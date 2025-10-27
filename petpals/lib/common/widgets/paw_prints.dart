@@ -16,7 +16,6 @@ class PawPrints extends StatelessWidget {
     super.key,
   });
 
-  // Factory constructors for common use cases
   const PawPrints.topLeft({
     this.width = 60,
     this.height = 60,
