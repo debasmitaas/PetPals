@@ -7,31 +7,35 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 70,
-      decoration: BoxDecoration(
-        color: AppColor.backgroundColor,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: AppColor.darkOrange.withValues(alpha: 0.5),
-            blurRadius: 20,
-            offset: const Offset(0, -3),
+    return SafeArea(
+      child: Container(
+        height: 70,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+          color: AppColor.backgroundColor,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
-        ],
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _buildNavItem('assets/vectors/nav1.svg'),
-          _buildNavItem('assets/vectors/nav2.svg'),
-          _buildNavItem('assets/vectors/nav3.svg'),
-          _buildNavItem('assets/vectors/nav4.svg'),
-          _buildNavItem('assets/vectors/nav5.svg'),
-        ],
+          boxShadow: [
+            BoxShadow(
+              color: AppColor.darkOrange.withValues(alpha: 0.7),
+              blurRadius: 20,
+              blurStyle: BlurStyle.solid
+              // offset: const Offset(0, -5),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavItem('assets/vectors/nav1.svg'),
+            _buildNavItem('assets/vectors/nav2.svg'),
+            _buildNavItem('assets/vectors/nav3.svg'),
+            _buildNavItem('assets/vectors/nav4.svg'),
+            _buildNavItem('assets/vectors/nav5.svg'),
+          ],
+        ),
       ),
     );
   }

@@ -18,7 +18,7 @@ class DeepOrangeButton extends StatelessWidget {
       child: ElevatedButton(onPressed: onPressed,
         
         style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight( height ?? 45),
+          minimumSize: Size.fromHeight( height ?? 25),
             backgroundColor: AppColor.darkOrange,
             foregroundColor: Colors.white,
             textStyle: const TextStyle(
