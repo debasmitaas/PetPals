@@ -4,10 +4,64 @@ import 'package:petpals/common/widgets/deep_orange_button.dart';
 import 'package:petpals/common/widgets/google_widget.dart';
 import 'package:petpals/common/widgets/paw_prints.dart';
 import 'package:petpals/core/config/theme/app_color.dart';
+import 'package:petpals/data/models/auth/create_user_req.dart';
+import 'package:petpals/domain/usecases/auth/register.dart';
 import 'package:petpals/presentation/home/pages/home_page.dart';
+import 'package:petpals/service_locator.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   const Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _repeatPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _repeatPasswordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _register() async {
+    if (_passwordController.text != _repeatPasswordController.text) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Passwords do not match!')),
+      );
+      return;
+    }
+
+    try {
+      await sl<RegisterUseCase>().call(
+        CreateUserReq(
+          fullname: _nameController.text,
+          email: _emailController.text,
+          password: _passwordController.text,
+        ),
+      );
+      
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,34 +86,25 @@ class Register extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 30),
-                const CustomTextField(label: 'Name'),
+                CustomTextField(label: 'Name', controller: _nameController),
                 const SizedBox(height: 20),
-                const CustomTextField(label: 'Phone Number'),
+                CustomTextField(label: 'Email', controller: _emailController),
                 const SizedBox(height: 20),
-                const PasswordTextField(label: 'Password'),
+                PasswordTextField(label: 'Password', controller: _passwordController),
                 const SizedBox(height: 20),
-                const PasswordTextField(label: 'Repeat Password'),
+                PasswordTextField(label: 'Repeat Password', controller: _repeatPasswordController),
                 const SizedBox(height: 30),
                 DeepOrangeButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomePage(),
-                      ),
-                    );
-                  },
+                  onPressed: _register,
                   title: 'Confirm',
                   height: 51,
                 ),
                 const SizedBox(height: 30),
                 GoogleWidget(onPressed: () {}),
-                // const SizedBox(height: 20),
                 const Align(
                   alignment: Alignment.centerRight,
                   child: PawPrints.bottomRight(),
                 ),
-              
               ],
             ),
           ),

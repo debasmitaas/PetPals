@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                             DeepOrangeButton(
                               onPressed: () {},
                               title: 'Знайти друзів',
-                              height: 30,
+                              height: 20,
                             ),
                           ],
                         ),
@@ -73,8 +73,8 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(width: 8),
                       Image.asset(
                         'assets/images/img1.png',
-                        width: 140,
-                        height: 140,
+                        width: 120,
+                        height: 120,
                       ),
                     ],
                   ),

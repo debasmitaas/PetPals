@@ -54,8 +54,8 @@ class Tips extends StatelessWidget {
                 borderRadius: BorderRadius.circular(screenWidth * 0.02),
                 child: Image.asset(
                   imagePath,
-                  width: screenWidth * 0.25,
-                  height: screenWidth * 0.25,
+                  width: screenWidth * 0.20,
+                  height: screenWidth * 0.20,
                   fit: BoxFit.contain,
                 ),
               ),
