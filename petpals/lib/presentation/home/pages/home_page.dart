@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petpals/common/widgets/deep_orange_button.dart';
 import 'package:petpals/presentation/home/widgets/doctors.dart';
 import 'package:petpals/common/widgets/navbar.dart';
 import 'package:petpals/common/widgets/sidebar.dart';
@@ -37,14 +36,14 @@ class _HomePageState extends State<HomePage> {
       drawer: const Sidebar(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 16),
                 Container(
-                  height: 150,
+                  width: double.infinity,
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     color: AppColor.lightOrange,
@@ -60,34 +59,74 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             const Text(
                               'Do you like spending time with animals?',
-                              style: TextStyle(fontSize: 24),
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'Bainsley',
+                                color: AppColor.brown,
+                              ),
                             ),
-                            DeepOrangeButton(
-                              onPressed: () {},
-                              title: 'Знайти друзів',
-                              height: 20,
+                            const SizedBox(height: 12),
+                            SizedBox(
+                              height: 40,
+                              width: 130,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColor.darkOrange,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: const Text(
+                                  'Знайті друзів',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontFamily: 'Bainsley',
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
                             ),
                           ],
                         ),
                       ),
-                      const SizedBox(width: 8),
+                      const SizedBox(width: 12),
                       Image.asset(
                         'assets/images/img1.png',
-                        width: 120,
-                        height: 120,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.contain,
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text('My favourites', style: TextStyle(fontSize: 24)),
+                const Text(
+                  'My favourites',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Bainsley',
+                    color: AppColor.brown,
+                  ),
+                ),
                 const SizedBox(height: 12),
-                FavouritesList(imagePaths: [
-                  'assets/images/fav1.png',
-                  'assets/images/fav2.png',
-                 
-                ]),
-                const Text('Tips Section', style: TextStyle(fontSize: 24)),
+                FavouritesList(
+                  imagePaths: [
+                    'assets/images/fav1.png',
+                    'assets/images/fav2.png',
+                  ],
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'Tips Section',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Bainsley',
+                    color: AppColor.brown,
+                  ),
+                ),
                 const SizedBox(height: 12),
                 TipsHorizontalList(
                   tips: [
@@ -113,7 +152,11 @@ class _HomePageState extends State<HomePage> {
                   children: const [
                     Text(
                       "Make a doctor's appointment",
-                      style: TextStyle(fontSize: 24),
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: 'Bainsley',
+                        color: AppColor.brown,
+                      ),
                     ),
                     Spacer(),
                     Icon(
@@ -123,38 +166,50 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 30),
-
+                const SizedBox(height: 16),
                 Doctors(
                   doctorName: 'Koloskova Elena Konstantinovna',
                   imagePath: 'assets/images/doc1.png',
                   petimagePath: 'assets/images/fav1.png',
-                  onTap: () {
-                    // Navigate to booking page
-                  },
+                  onTap: () {},
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 16),
                 Doctors(
                   doctorName: 'Smirnov Yuri Anatoliyovych',
                   imagePath: 'assets/images/doc2.png',
                   petimagePath: 'assets/images/fav2.png',
-                  onTap: () {
-                    // Navigate to booking page
-                  },
+                  onTap: () {},
                 ),
                 const SizedBox(height: 20),
-                Text("Events", style: TextStyle(fontSize: 24)),
-                const SizedBox(height: 30),
-                Events(timeText: '05.04', eventText: "Training will be held for your dogs!", imagePath: 'assets/images/event1.png', onTap: (){}),
+                const Text(
+                  "Events",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'Bainsley',
+                    color: AppColor.brown,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Events(
+                  timeText: '05.04',
+                  eventText: "Training will be held for your dogs!",
+                  imagePath: 'assets/images/event1.png',
+                  onTap: () {},
+                ),
+                const SizedBox(height: 16),
+                Events(
+                  timeText: '08.04',
+                  eventText: "Let's go hiking with your pets!",
+                  imagePath: 'assets/images/event2.png',
+                  onTap: () {},
+                ),
                 const SizedBox(height: 20),
-                                Events(timeText: '08.04', eventText: "Let's go hiking with your pets!", imagePath: 'assets/images/event2.png', onTap: (){}),
-
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: Navbar(),
+      bottomNavigationBar: const Navbar(),
     );
   }
 }
